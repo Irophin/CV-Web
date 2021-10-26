@@ -183,11 +183,10 @@ body {
 /*--Configure le contenu en grille--*/
 #Contenu{
 	display: grid;
-	grid-template-areas: 
-		"Experience Formation" 
-		"Experience Competences"
-		"Experience Langues";
-
+	grid-template-areas: "Experience Formation" 
+			     "Experience Competences"
+			     "Experience Langues";
+		
 	grid-template-columns: 4fr 5fr;
 	margin: 20px 50px 0 50px;
 	grid-row-gap: 10px;
@@ -289,7 +288,7 @@ body {
 /* Changement des couleurs principales en cas de dark mode */
 @media (prefers-color-scheme: dark){
 	:root{
-	  --bleu: 	#d9e1fa;
+	  --bleu:   #d9e1fa;
 	  --blanc:  #061A26;
 
 	}
@@ -297,8 +296,8 @@ body {
 
 @media (orientation: portrait) {
 	body{
-		grid-template-areas: "Bandeau" 
-							 "Contenu";
+	grid-template-areas: "Bandeau" 
+			     "Contenu";
 
 	/*--Définition de la taille du bandeau a 20% de la page mais avec un minimum à 300px--*/
 	grid-template-columns: none;
@@ -306,12 +305,10 @@ body {
 	}
 
 	#Contenu{
-		grid-template-areas: 
-			"Experience" 
-			"Formation" 
-			"Competences"
-			"Langues";
-	
+		grid-template-areas: "Experience" 
+				     "Formation" 
+				     "Competences"
+				     "Langues";
 		margin: 0;
 		grid-row-gap: 10px;
 		grid-template-columns: none;
