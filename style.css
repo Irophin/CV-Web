@@ -1,13 +1,21 @@
 
-/*--Déclaration des variables--*/
+/*____________________________________________________Initialisation____________________________________________________*/
+
+/*Cette partie est composée des modifications qui touchent toute la page*/
+
+
+/*__________________________Variables__________________________*/
+
+/*Déclaration des variables*/
 :root {
-  --bleu: #2d304f;
+  --bleu:  #2d304f;
   --blanc: #f3fbfe;
   color : var(--bleu);
 }
 
+/*__________________________Scrollbar__________________________*/
 
-/*Met l’épaisseur de la scrollbar à 10px */
+/*Met l’épaisseur de la scrollbar à 10px*/
 ::-webkit-scrollbar {
 	/*Scrollbar Vertical*/
 	width: 10px;
@@ -15,7 +23,7 @@
 	height: 10px;
   }
 
-/*--Personnalise la scrollbar*/
+/*Personnalise la scrollbar*/
 ::-webkit-scrollbar-thumb {
 	/*La met en bleu*/
 	background-color: var(--bleu);
@@ -24,49 +32,53 @@
   }
   
 
-/*--Empêche L'utilisateur de sélectionner les images--*/
+/*__________________________Séléction__________________________*/
+
+/*Empêche L'utilisateur de sélectionner les images*/
 img{
 	-webkit-user-select: none;
 }
 
-/*--Sélectionne en bleu sur blanc tous les éléments du Bandeau--*/
+/*Sélectionne en bleu sur blanc tous les éléments du Bandeau*/
 #Bandeau *::selection{
  color: var(--bleu);
  background: var(--blanc);
 }
 
-/*--Sélectionne en blanc sur bleu tous les éléments du Contenu--*/
+/*Sélectionne en blanc sur bleu tous les éléments du Contenu*/
 #Contenu *::selection {
  color: var(--blanc);
  background: var(--bleu);
  }
 
-/*--Reset de la séparation et centre le texte qu'il contient--*/
+/*__________________________Séparation__________________________*/
+
+/*Reset de la séparation horizontal et centre le texte qu'il contient*/
 hr{
   border: 0;
   position: relative;
   text-align: center;
 }
 
-/*--Création d'une barre horizontal--*/
+/*Création d'une barre horizontal*/
 hr:before {
     content: '';
     background: linear-gradient(to right, transparent, var(--blanc), transparent);
     position: absolute;	
     height: 3px;
 
-    /*--Fait que la barre prends 90% de la page--*/
+    /*Fait que la barre prends 90% de la page*/
     left: 5%;
     width: 90%;
 
-    /*--Remonte la barre pour passer derrière le texte--*/
+    /*Remonte la barre pour passer derrière le texte*/
     top: 40%;
   }
 
-/*--Insertion du contenu de la séparation--*/
+/*Insertion du contenu de la séparation*/
 hr:after {
 
-	/*Indique que le contenu du pseudo élément sera la valeur 'data-content' de la balise hr dans l'html */
+	/*Indique que le contenu du pseudo élément sera la valeur 'data-content' de la balise hr dans l'HTML */
     content: attr(data-content);
 
     position: relative;
@@ -78,12 +90,12 @@ hr:after {
     font-weight: 555;
 }
 
-/*--Modifie la couleur du gradient pour qu'il soit visible dans la partie contenu--*/
+/*Modifie la couleur du gradient pour qu'il soit visible dans la partie contenu*/
 #Contenu hr:before {
 	background: linear-gradient(to right, transparent, var(--bleu), transparent);
 }
 
-/*--Modifie la couleur du texte pour qu'il soit lisible dans la partie contenu--*/
+/*Modifie la couleur du texte pour qu'il soit lisible dans la partie contenu*/
 #Contenu hr:after{
 
 	/*Espace les lettres de 5px*/
@@ -93,7 +105,10 @@ hr:after {
     background-color: var(--blanc);
 }
 
-/*--Reset et configuration du body--*/
+
+/*__________________________Corp__________________________*/
+
+/*Reset et configuration du body*/
 body {
 	margin: 0;
 	padding: 0;
@@ -103,11 +118,11 @@ body {
 
 	font-size: 1.07em;
 
-	/*--Création d'une grille fixant la bandeau à droite et le contenu à gauche--*/
+	/*Création d'une grille fixant la bandeau à droite et le contenu à gauche*/
 	display: grid;
 	grid-template-areas: "Bandeau Contenu";
 
-	/*--Définition de la taille du bandeau à 20% de la page mais avec un minimum à 300px--*/
+	/*Définition de la taille du bandeau à 20% de la page mais avec un minimum à 300px*/
 	grid-template-columns: max(20vw,300px) 1fr;
 
 	/* Place les Scrollbar en overlay */
@@ -131,7 +146,13 @@ body {
 	to {opacity: 1}
 } 
 
-/*--Configuration du bandeau avec flex--*/
+/*____________________________________________________Configuration____________________________________________________*/
+
+/*Cette partie est composée de toutes les modifications du CV*/
+
+/*__________________________Bandeau__________________________*/
+
+/*Configuration du bandeau avec flex*/
 #Bandeau{
 	display: flex;
 	flex-direction: column;
@@ -146,7 +167,7 @@ body {
 	/*Arrondi le bord inférieur droit*/
 	border-bottom-right-radius: 50px;
 
-	/*--Indique que le bandeau doit prendre la plus grande valeur entre 100% du contenu et 100% de la page--*/
+	/*Indique que le bandeau doit prendre la plus grande valeur entre 100% du contenu et 100% de la page*/
 	height: max(100vh, 100%);
 }
 
@@ -168,55 +189,57 @@ body {
 	height:100px;
 	background:var(--blanc);
 
-	/*Complète la partie arrondie par du bleu*/
+	/*Complète la partie arrondie en projetant du bleu hors de l'élément*/
 	box-shadow: -25px -25px 0px 0px var(--bleu);
 }
 
-/*--Arrondie les bords de la photos et lui rajoute un contours blanc--*/
+/*Arrondie les bords de la photos et lui rajoute un contours blanc*/
 #Bandeau .Portrait img{
 	width: 10em;
 	border-radius: 50%;
 	border: 5px solid var(--blanc);
 }
 
-/*--Centre le Nom/Prénom et grossie le texte--*/
+/*Centre le Nom/Prénom et grossie le texte*/
 #Bandeau .Portrait h1{
 	width: 100%;
 	text-align: center;
 	font-size: 1.4em;
 }
 
-/*--Met a la ligne le Nom et espace ses lettres--*/
+/*Met a la ligne le Nom et espace ses lettres*/
 #Bandeau .Portrait h1 span{
 	display: block;
 	letter-spacing: 9px;
 }
 
-/*--Limite la largeur à 80% et reset le style d'écriture*/
+/*Limite la largeur à 80% et reset le style d'écriture*/
 #Bandeau .Contact{
 	width: 80%;
 	font-style: normal;
 }
 
-/*--Reset les liens--*/
+/*Reset les liens*/
 #Bandeau .Contact a{
 	/*Désactive le soulignement*/
 	text-decoration: none;
 	color: inherit;
 }
 
-/*--Met un espace de 10px entre l’icône et le texte--*/
+/*Met un espace de 10px entre l’icône et le texte*/
 #Bandeau .Contact i{
 	padding-right: 10px;
 }
 
-/*--Limite la largeur à 80% et aligne le texte--*/
+/*Limite la largeur à 80% et aligne le texte*/
 #Bandeau .Profil{
 	width: 80%;
 	text-align: center;
 }
 
-/*--Configure le contenu en grille--*/
+/*__________________________Contenu__________________________*/
+
+/*Configure le contenu en grille*/
 #Contenu{
 	display: grid;
 	grid-template-areas: 
@@ -235,7 +258,7 @@ body {
 #Contenu .Competences{grid-area: Competences}
 #Contenu .Langues{grid-area: Langues}
 
-/*--Reset du titre 2--*/
+/*Reset du titre 2*/
 #Contenu h2 {
 	margin-block-start: 0;
 	margin-block-end: 0;
@@ -247,7 +270,7 @@ body {
 	margin-block-start: 0;
 }
 
-/*--Mise en page des articles--*/
+/*Mise en page des articles*/
 #Contenu article{
 	border-left: 3px solid var(--bleu);
 	border-radius: 4px;
@@ -255,22 +278,25 @@ body {
 	margin: 3%;
 }
 
+/*Change la couleur de la bordure d'un article quand on passe la souris dessus*/
 #Contenu article:hover{
 	border-color: #03A9F4;
 }
 
-/*--Mise en ligne des puces d'une liste dans la catégorie formation--*/
+/*Mise en ligne des puces d'une liste dans la catégorie formation*/
 #Contenu .Formation ul li{
 	display: inline;
 	padding: 5px;
 }
 
-/*--Mise en place d'une bordure gauche pour toutes les puces sauf la 1ere--*/
+/*Mise en place d'une bordure gauche pour toutes les puces sauf la 1ere*/
 #Contenu .Formation ul li+li{
 	border-left: 2px solid grey;
 }
 
-/*--Mise en forme des espaces horizontaux pour les conteneurs Étude et Progression*/
+/*__________________________Progression__________________________*/
+
+/*Mise en forme des espaces horizontaux pour les conteneurs Étude et Progression*/
 #Contenu .Progression,
 #Contenu .Etudes{
 	display: flex;
@@ -279,12 +305,12 @@ body {
 	justify-content: center;
 }
 
-/*--Aligne le texte et les jauges de progressions--*/
+/*Aligne au centre le texte et les jauges de progressions*/
 #Contenu .Progression{
 	align-items: center;
 }
 
-/*--Création d'une grille fixant le nom et la jauge de progression associé a droite--*/
+/*Création d'une grille fixant le nom et la jauge de progression associé a droite*/
 #Contenu .Progression div{
 	display: grid;
 	grid-template-areas: "nom niveau";
@@ -298,6 +324,8 @@ body {
 #Contenu .Progression div:nth-child(odd){
 	margin-top: 15px;
 } 
+
+/*__________________________Jauges__________________________*/
 
 /*Reset du conteneur de liste*/
 #Contenu .Progression .Jauge{
@@ -341,7 +369,12 @@ body {
 }
 
 
-/*---Media Queries---*/
+/*____________________________________________________Media Queries____________________________________________________*/
+
+/*Cette partie est composée de toutes les requêtes média*/
+
+
+/*__________________________Dark Mode__________________________*/
 
 /* Changement des couleurs en cas de dark mode */
 @media (prefers-color-scheme: dark){
@@ -353,6 +386,8 @@ body {
 	  --blanc: #061A26;
 	}
 }
+
+/*__________________________Portrait__________________________*/
 
 /* Changement de disposition en cas d'orientation portrait */
 @media (orientation : portrait) {
