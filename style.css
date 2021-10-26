@@ -1,0 +1,333 @@
+
+/*--Déclaration des variables--*/
+:root {
+  --bleu: #2d304f;
+  --blanc: #f3fbfe;
+  color : var(--bleu);
+}
+
+::-webkit-scrollbar {
+	display: absolute;
+	width: 10px;
+	height: 10px;
+  }
+::-webkit-scrollbar-thumb {
+	position: absolute;
+	background-color: var(--bleu);
+	border-radius: 10px;
+  }
+  
+
+/*--Empêche L'utilisateur de sélectionner les images--*/
+img{
+	-webkit-user-select: none;
+}
+
+/*--Sélectionne en bleu sur blanc tous les éléments du Bandeau--*/
+#Bandeau *::selection{
+ color: var(--bleu);
+ background: var(--blanc);
+}
+
+/*--Sélectionne en blanc sur bleu tous les éléments du Contenu--*/
+#Contenu *::selection {
+ color: var(--blanc);
+ background: var(--bleu);
+ }
+
+/*--Reset de la séparation et centre le texte qu'il contient--*/
+hr{
+  border: 0;
+  position: relative;
+  text-align: center;
+}
+
+/*--Création d'une barre horizontal--*/
+hr:before {
+    content: '';
+    background: linear-gradient(to right, transparent, var(--blanc), transparent);
+    position: absolute;	
+    height: 3px;
+
+    /*--Fait que la barre prends 90% de la page--*/
+    left: 5%;
+    width: 90%;
+
+    /*--Remonte la barre pour passer derrière le texte--*/
+    top: 40%;
+  }
+
+/*--Insertion du contenu de la séparation--*/
+hr:after {
+    content: attr(data-content);
+    position: relative;
+    padding: 0 .5em;
+    color: var(--blanc);
+    background-color: var(--bleu);
+    font-weight: 555;
+}
+
+/*--Modifie la couleur du gradient pour qu'il soit visible dans la partie contenu--*/
+#Contenu hr:before {
+	background: linear-gradient(to right, transparent, var(--bleu), transparent);
+}
+
+/*--Modifie la couleur du texte pour qu'il soit lisible dans la partie contenu--*/
+#Contenu hr:after{
+	letter-spacing: 5px;
+	color: var(--bleu);
+    background-color: var(--blanc);
+}
+
+/*--Reset et configuration du body--*/
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--blanc);
+	font-family: Helvetica;
+	font-size: 1.0em;
+
+	/*--Création d'une grille fixant la bandeau a droite et le contenu a gauche--*/
+	display: grid;
+	grid-template-areas: "Bandeau Contenu";
+
+	/*--Définition de la taille du bandeau a 20% de la page mais avec un minimum à 300px--*/
+	grid-template-columns: max(20vw,300px) 1fr;
+
+	/* Place la Scrollbar en overlay */
+	overflow-y: overlay;
+
+	/* Parametreage du fondu de chargement */
+	animation-name: Fondu;
+	animation-duration: 0.2s; 
+	animation-iteration-count: 1; 
+}
+
+@keyframes Fondu { 
+	from {opacity: 0}
+	to {opacity: 1}
+} 
+
+/*--Configuration du bandeau avec flex--*/
+#Bandeau{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+
+	background-color: var(--bleu);
+	color: var(--blanc);
+	border-bottom-right-radius: 50px;
+
+	/*--Indique que le bandeau doit prendre la plus grande valeur entre 100% du contenu et 100% de la page--*/
+	height: max(100vh, 100%);
+}
+
+#Bandeau::before{
+	position:absolute;
+	top: 0;
+	left: 100%;
+	z-index:-1 ;
+	border-top-left-radius: 50%;
+	content : '';
+	width:100px;
+	height:100px;
+	background:var(--blanc);
+	box-shadow: -25px -25px 0px 0px var(--bleu);
+
+}
+
+/*--Arrondie les bords de la photos et lui rajoute un contours blanc--*/
+#Bandeau .Portrait img{
+	width: 10em;
+	border-radius: 50%;
+	border: 5px solid var(--blanc);
+}
+
+/*--Centre le Nom/Prénom et grossie le texte--*/
+#Bandeau .Portrait h1{
+	text-align: center;
+	font-size: 1.4em;
+}
+
+/*--Met a la ligne le Nom et espace ses lettres--*/
+#Bandeau .Portrait h1 span{
+	display: block;
+	letter-spacing: 9px;
+}
+
+/*--Limite la largeur a 80% et reset le style d'écriture*/
+#Bandeau .Contact{
+	width: 80%;
+	font-style: normal;
+}
+
+/*--Reset les liens--*/
+#Bandeau .Contact a{
+	text-decoration: none;
+	color: inherit;
+}
+
+/*--Met un espace de 10px entre l’icône et le texte--*/
+#Bandeau .Contact i{
+	padding-right: 10px;
+}
+
+/*--Limite la largeur à 80% et aligne le texte--*/
+#Bandeau .Profil{
+	width: 80%;
+	text-align: center;
+}
+
+/*--Configure le contenu en grille--*/
+#Contenu{
+	display: grid;
+	grid-template-areas: 
+		"Experience Formation" 
+		"Experience Competences"
+		"Experience Langues";
+
+	grid-template-columns: 4fr 5fr;
+	margin: 20px 50px 0 50px;
+	grid-row-gap: 10px;
+}
+
+/*Fixe les conteneurs a leur zone*/
+#Contenu .Experience{grid-area: Experience}
+#Contenu .Formation{grid-area: Formation}
+#Contenu .Competences{grid-area: Competences}
+#Contenu .Langues{grid-area: Langues}
+
+/*--Reset du titre 2--*/
+#Contenu h2 {
+	margin-block-start: 0;
+	margin-block-end: 0;
+	font-size: inherit;
+}
+
+/*--Mise en page des articles--*/
+#Contenu article{
+	border-left: 3px solid var(--bleu);
+	border-radius: 4px;
+	padding-left: 10px;
+	margin: 3%;
+}
+
+#Contenu article:hover{
+	border-color: #03A9F4;
+}
+
+/*--Mise en ligne des puces d'une liste--*/
+#Contenu .Formation ul li{
+	display: inline;
+	padding: 5px;
+}
+
+/*--Mise en place d'une bordure gauche pour toutes les puces sauf la 1ere--*/
+#Contenu .Formation ul li+li{
+	border-left: 2px solid grey;
+}
+
+/*--Mise en forme des espaces horizontaux pour les conteneurs Etude et Progression*/
+#Contenu .Progression,
+#Contenu .Etudes{
+	display: flex;
+	height: 90%;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+/*--Aligne le texte et les jauges de progressions--*/
+#Contenu .Progression{
+	align-items: center;
+}
+
+/*--Création d'une grille fixant le nom et la jauge de progression associé a droite--*/
+#Contenu .Progression div{
+	display: grid;
+	grid-template-areas: "nom niveau";
+	grid-template-columns: 1fr 1fr;
+	transition: .3s;
+}
+/*Fixe les objets a leur zone*/
+#Contenu .Progression span{grid-area: nom}
+
+/*Reset du conteneur de liste*/
+#Contenu .Progression .Jauge{
+	grid-area: niveau;
+	margin :0;
+	padding :0;
+}
+
+/*Création des cercles de progression*/
+#Contenu .Jauge li{
+	display: inline-block;
+	width: .7em;
+	height: .7em;
+	border : 3px solid var(--bleu);
+	border-radius:50%;
+	margin : 3px;
+}
+
+/*Classe complétant le cercle de progression*/
+#Contenu .Complet{
+	background:var(--bleu);
+}
+
+/*Classe complétant à moitié le cercle de progression*/
+#Contenu .Moitier{
+	background:linear-gradient(to right, var(--bleu) 50%, var(--blanc) 50%);
+}
+
+/*Met a 110% la taille des jauges de progression quand on passe notre souris dessus*/
+#Contenu .Progression div:hover{
+	transform: scale(1.1);
+}
+
+
+/* Changement des couleurs principales en cas de dark mode */
+@media (prefers-color-scheme: dark){
+	:root{
+	  --bleu: 	#d9e1fa;
+	  --blanc:  #061A26;
+
+	}
+}
+
+@media (orientation: portrait) {
+	body{
+		grid-template-areas: "Bandeau" 
+							 "Contenu";
+
+	/*--Définition de la taille du bandeau a 20% de la page mais avec un minimum à 300px--*/
+	grid-template-columns: none;
+	grid-auto-rows: auto;
+	}
+
+	#Contenu{
+		grid-template-areas: 
+			"Experience" 
+			"Formation" 
+			"Competences"
+			"Langues";
+	
+		margin: 0;
+		grid-row-gap: 10px;
+		grid-template-columns: none;
+		width: 100%;
+	}
+
+	#Bandeau{
+		height: auto;
+		padding: 50px 0;
+		width: 100%;
+		border-bottom-left-radius: 50px;
+		border-bottom-right-radius: 50px;
+	}
+	
+	#Bandeau::before{
+		height: 0;
+		width: 0;
+	}
+}
