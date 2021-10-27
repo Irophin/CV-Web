@@ -11,4 +11,4 @@ Vous y retrouverez aussi deux fonctionnalités cachées :
 
 -Il y a aussi de nombreuses petites modifications que je vous laisserai découvrir (hover, scrollbar, fondu de démarrage....).
 
-Vous pouvez aussi retrouver le site ici : https://irophin.github.io/CV-Web/
+Vous pouvez retrouver le site ici : https://irophin.github.io/CV-Web/
