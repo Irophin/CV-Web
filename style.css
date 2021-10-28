@@ -36,7 +36,7 @@
 
 /*Empêche l'utilisateur de sélectionner les images*/
 img{
-	-webkit-user-select: none;
+	user-select: none;
 }
 
 /*Sélectionne en bleu sur blanc tous les éléments du Bandeau*/
