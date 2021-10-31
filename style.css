@@ -445,7 +445,7 @@ body {
 		width: 0;
 	}
 
-		/*Configure l'animation de translation*/
+	/*Reconfigure l'animation de translation*/
 	@keyframes translation { 
 		/*Commence l’animation, decalé vers le haut*/
 		from {transform: translate(0,-5vh)}
