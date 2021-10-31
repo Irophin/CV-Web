@@ -36,7 +36,7 @@
 
 /*Empêche l'utilisateur de sélectionner les images*/
 img{
-	user-select: none;
+	-webkit-user-select: none;
 }
 
 /*Sélectionne en bleu sur blanc tous les éléments du Bandeau*/
@@ -131,7 +131,7 @@ body {
 
 	/* Paramétrage du fondu de chargement */
 	animation-name: Fondu;
-	animation-duration: 0.3s;
+	animation-duration: 0.5s;
 
 	/*Fait que l’animation ne se fera qu'une seule fois*/
 	animation-iteration-count: 1; 
@@ -169,7 +169,20 @@ body {
 
 	/*Indique que le bandeau doit prendre la plus grande valeur entre 100% du contenu et 100% de la page*/
 	height: max(100vh, 100%);
+
+	/* Paramétrage de la translation de demarage */
+	animation-name: translation;
+	animation-duration: 1.5s;
+
+	/*Fait que l’animation ne se fera qu'une seule fois*/
+	animation-iteration-count: 1; 
 }
+
+/*Configure l'animation de fondu*/
+@keyframes translation { 
+	/*Commence l’animation, decalé vers la gauche*/
+	from {transform: translate(-5vw)}
+} 
 
 /*Configure un pseudo élément pour 'compléter' la vague du bandeau*/
 #Bandeau::before{
@@ -187,7 +200,7 @@ body {
 	border-top-left-radius: 50%;
 	width:100px;
 	height:100px;
-	background:var(--blanc);
+	background:transparent;
 
 	/*Complète la partie arrondie en projetant du bleu hors de l'élément*/
 	box-shadow: -25px -25px 0px 0px var(--bleu);
@@ -431,4 +444,11 @@ body {
 		height: 0;
 		width: 0;
 	}
+
+		/*Configure l'animation de translation*/
+	@keyframes translation { 
+		/*Commence l’animation, decalé vers le haut*/
+		from {transform: translate(0,-5vh)}
+	} 
+
 }
